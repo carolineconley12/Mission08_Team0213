@@ -24,11 +24,27 @@
 				<th>Delete</th>
 			</tr>
 		</thead>
-		<tbody>
-			@* 		<tr>
-			<td>Important</td>
-			</tr> *@
-		</tbody>
+				@* 				<tbody>
+				@foreach (var row in Model)
+				{
+
+				<tr>
+				<td>@row.Category.CategoryName</td>
+				<td>@row.Title</td>
+				<td>@row.Year</td>
+				<td>@row.Director</td>
+				<td>@row.Rating</td>
+				<td>@row.Edited</td>
+				<td>@row.LentTo</td>
+				<td>@row.CopiedToPlex</td>
+				<td>@row.Notes</td>
+
+				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit">Edit</a></td>
+				<td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete">Delete</a></td>
+				</tr>
+
+				}
+				</tbody> *@
 	</table>
 	</div>
 
@@ -48,11 +64,27 @@
 				<th>Delete</th>
 			</tr>
 		</thead>
-		<tbody>
-			@* 		<tr>
-			<td>Not Important</td>
-			</tr> *@
-		</tbody>
+				@* 				<tbody>
+				@foreach (var row in Model)
+				{
+
+				<tr>
+				<td>@row.Category.CategoryName</td>
+				<td>@row.Title</td>
+				<td>@row.Year</td>
+				<td>@row.Director</td>
+				<td>@row.Rating</td>
+				<td>@row.Edited</td>
+				<td>@row.LentTo</td>
+				<td>@row.CopiedToPlex</td>
+				<td>@row.Notes</td>
+
+				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit">Edit</a></td>
+				<td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete">Delete</a></td>
+				</tr>
+
+				}
+				</tbody> *@
 	</table>
 	</div>
 </div>
@@ -74,11 +106,27 @@
 				<th>Delete</th>
 			</tr>
 		</thead>
-		<tbody>
-			@* 		<tr>
-			<td>Important</td>
-			</tr> *@
-		</tbody>
+				@* 				<tbody>
+				@foreach (var row in Model)
+				{
+
+				<tr>
+				<td>@row.Category.CategoryName</td>
+				<td>@row.Title</td>
+				<td>@row.Year</td>
+				<td>@row.Director</td>
+				<td>@row.Rating</td>
+				<td>@row.Edited</td>
+				<td>@row.LentTo</td>
+				<td>@row.CopiedToPlex</td>
+				<td>@row.Notes</td>
+
+				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit">Edit</a></td>
+				<td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete">Delete</a></td>
+				</tr>
+
+				}
+				</tbody> *@
 	</table>
 	</div>
 
@@ -98,11 +146,27 @@
 				<th>Delete</th>
 			</tr>
 		</thead>
-		<tbody>
-			@* 		<tr>
-			<td>Not Important</td>
-			</tr> *@
-		</tbody>
+@* 				<tbody>
+					@foreach (var row in Model)
+					{
+
+						<tr>
+							<td>@row.Category.CategoryName</td>
+							<td>@row.Title</td>
+							<td>@row.Year</td>
+							<td>@row.Director</td>
+							<td>@row.Rating</td>
+							<td>@row.Edited</td>
+							<td>@row.LentTo</td>
+							<td>@row.CopiedToPlex</td>
+							<td>@row.Notes</td>
+
+							<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit">Edit</a></td>
+							<td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete">Delete</a></td>
+						</tr>
+
+					}
+				</tbody> *@
 	</table>
 	</div>
 </div>
