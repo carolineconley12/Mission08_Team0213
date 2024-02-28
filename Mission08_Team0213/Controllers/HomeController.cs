@@ -13,8 +13,36 @@ namespace Mission08_Team0213.Controllers
 
         public HomeController(ITaskRepository temp)
         {
-           _repo = temp;
+            _repo = temp;
         }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View(new TaskTemplate());
+        }
+
+        [HttpPost]
+        public IActionResult Index(TaskTemplate task)
+        {
+            if (ModelState.IsValid)
+            {
+                _repo.AddTask(task);
+            }
+            return View(new TaskTemplate());
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var record = _repo.Tasks
+                 .Single(x => x.TaskId == id);
+            _repo.EditTask(record);
+
+
+            return View("AddTask", record);
+        }
+      
 
 
         [HttpGet]
