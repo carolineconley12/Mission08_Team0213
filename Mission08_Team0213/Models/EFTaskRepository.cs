@@ -16,5 +16,18 @@
             _context.Add(task);
             _context.SaveChanges();
         }
+
+        public void EditTask (TaskTemplate task) 
+        { 
+            _context.Update(task);
+            _context.SaveChanges();
+        }
+
+        public void DeleteTask (TaskTemplate task) 
+        {
+            _context.Tasks.Remove(task);
+            _context.SaveChanges();
+        }
     }
+
 }

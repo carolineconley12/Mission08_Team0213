@@ -9,11 +9,6 @@ namespace Mission08_Team0213.Controllers
     public class HomeController : Controller
     {
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         private ITaskRepository _repo;
 
         public HomeController(ITaskRepository temp)
@@ -42,7 +37,6 @@ namespace Mission08_Team0213.Controllers
         }
 
 
-
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -55,7 +49,7 @@ namespace Mission08_Team0213.Controllers
         [HttpPost]
         public IActionResult Delete(TaskTemplate task)
         {
-            _repo.Movies.Remove(task);
+            _repo.Tasks.Remove(task);
             _repo.SaveChanges();
 
             return RedirectToAction("List");
