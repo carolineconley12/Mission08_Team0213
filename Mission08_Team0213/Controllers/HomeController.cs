@@ -42,6 +42,16 @@ namespace Mission08_Team0213.Controllers
 
             return View("AddTask", record);
         }
+
+        [HttpPost]
+        public IActionResult Edit(TaskTemplate task)
+        {
+            if (ModelState.IsValid)
+            {
+                _repo.EditTask(task);
+            }
+            return View();
+        }
       
 
 
