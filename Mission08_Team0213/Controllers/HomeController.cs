@@ -9,7 +9,7 @@ namespace Mission08_Team0213.Controllers
     public class HomeController : Controller
     {
 
-        public IActionResult Index()
+        public IActionResult Index();
 
         private ITaskRepository _repo;
 
