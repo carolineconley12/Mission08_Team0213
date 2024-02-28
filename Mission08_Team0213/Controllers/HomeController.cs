@@ -21,7 +21,6 @@ namespace Mission08_Team0213.Controllers
         {
             var record = _repo.Tasks
                  .Single(x => x.TaskId == id);
-            _repo.EditTask(record);
 
 
             return View("AddTask", record);
@@ -35,7 +34,7 @@ namespace Mission08_Team0213.Controllers
                 _repo.EditTask(task);
               
             }
-            return View();
+            return View(task);
         }
 
 
@@ -46,13 +45,13 @@ namespace Mission08_Team0213.Controllers
                 .Single(x => x.TaskId == id);
 
             return View(recordToDelete);
-
         }
+
         [HttpPost]
         public IActionResult Delete(TaskTemplate task)
         {
-            _repo.Tasks.Remove(task);
-            _repo.SaveChanges();
+            _repo.DeleteTask(task);
+          
 
             return RedirectToAction("List");
         }
