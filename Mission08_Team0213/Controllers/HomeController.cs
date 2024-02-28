@@ -9,7 +9,10 @@ namespace Mission08_Team0213.Controllers
     public class HomeController : Controller
     {
 
-        public IActionResult Index(
+        public IActionResult Index()
+        {
+            return View();
+        }
 
         private ITaskRepository _repo;
 
