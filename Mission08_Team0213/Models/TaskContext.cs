@@ -8,6 +8,6 @@ namespace Mission08_Team0213.Models
         { 
         }
 
-        public DbSet<Task> Tasks { get; set;}
+        public DbSet<TaskTemplate> Tasks { get; set;}
     }
 }

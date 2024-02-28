@@ -2,7 +2,7 @@
 {
     public interface ITaskRepository
     {
-        List<Task> Tasks { get; }
-        public void AddTask(Task task);
+        List<TaskTemplate> Tasks { get; }
+        public void AddTask(TaskTemplate task);
     }
 }

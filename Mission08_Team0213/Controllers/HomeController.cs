@@ -9,7 +9,7 @@ namespace Mission08_Team0213.Controllers
     public class HomeController : Controller
     {
 
-        public IActionResult Index()
+        public IActionResult Index(
 
         private ITaskRepository _repo;
 
@@ -30,7 +30,7 @@ namespace Mission08_Team0213.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(Task updatedInfo)
+        public IActionResult Update(TaskTemplate updatedInfo)
         {
             _repo.Update(updatedInfo);
             _repo.SaveChanges();
@@ -50,7 +50,7 @@ namespace Mission08_Team0213.Controllers
 
         }
         [HttpPost]
-        public IActionResult Delete(Task task)
+        public IActionResult Delete(TaskTemplate task)
         {
             _repo.Movies.Remove(task);
             _repo.SaveChanges();
@@ -64,18 +64,18 @@ namespace Mission08_Team0213.Controllers
         [HttpGet]
         public IActionResult AddTask()
         {
-            return View(new Task());
+            return View(new TaskTemplate());
         }
 
         [HttpPost]
-         public IActionResult AddTask(Task t)
+         public IActionResult AddTask(TaskTemplate t)
          {
             if (ModelState.IsValid)
             {
                 _repo.AddTask(t);
             }
 
-            return View(new Task());
+            return View(new TaskTemplate());
 
          }
 
@@ -91,7 +91,7 @@ namespace Mission08_Team0213.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Task updatedInfo)
+        public IActionResult Edit(TaskTemplate updatedInfo)
         {
             _repo.Update(updatedInfo);
             _repo.SaveChanges();
