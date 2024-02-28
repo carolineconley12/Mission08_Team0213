@@ -15,30 +15,23 @@ namespace Mission08_Team0213.Controllers
            _repo = temp;
         }
 
-        public IActionResult Index()
-        {
-            var blah = _repo.Tasks.FirstOrDefault(x => x.TaskId);
-            return View(blah);
-        }
-
-        // need an update and delete controller
 
         [HttpGet]
         public IActionResult Update(int id)
         {
-            var recordToEdit = _context.Movies
+            var recordToEdit = _repo.Movies
                 .Single(x => x.TaskId == id);
 
-            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Categories = _repo.Categories.ToList();
 
             return View("Form", recordToEdit);
         }
 
         [HttpPost]
-        public IActionResult Update(Movie updatedInfo)
+        public IActionResult Update(Task updatedInfo)
         {
-            _context.Update(updatedInfo);
-            _context.SaveChanges();
+            _repo.Update(updatedInfo);
+            _repo.SaveChanges();
 
             return RedirectToAction("List");
         }
@@ -46,28 +39,23 @@ namespace Mission08_Team0213.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var recordToDelete = _context.Movies
+            var recordToDelete = _repo.Tasks
                 .Single(x => x.TaskId == id);
 
             return View(recordToDelete);
 
         }
         [HttpPost]
-        public IActionResult Delete(Movie movie)
+        public IActionResult Delete(Task task)
         {
-            _context.Movies.Remove(movie);
-            _context.SaveChanges();
+            _repo.Movies.Remove(task);
+            _repo.SaveChanges();
 
             return RedirectToAction("List");
         }
 
+        //ADD VIEW
 
-        public IActionResult AddTask()
-        {
-            return View();
-        }
-
-    // need an add and edit task controller 
 
         [HttpGet]
         public IActionResult AddTask()
@@ -76,7 +64,6 @@ namespace Mission08_Team0213.Controllers
         }
 
         [HttpPost]
-
          public IActionResult AddTask(Task t)
          {
             if (ModelState.IsValid)
@@ -88,36 +75,24 @@ namespace Mission08_Team0213.Controllers
 
          }
 
-
-
-
-
-
         [HttpGet]
-        public IActionResult Form()
+        public IActionResult Edit(int id)
         {
-            ViewBag.Categories = _context.Categories.ToList();
-            return View();
+            var recordToEdit = _repo.Tasks
+                .Single(x => x.TaskId == id);
+
+            ViewBag.Categories = _repo.Categories.ToList();
+
+            return View("Form", recordToEdit);
         }
 
         [HttpPost]
-        public IActionResult Form(Movie response)
+        public IActionResult Edit(Task updatedInfo)
         {
-            _context.Movies.Add(response);
-            _context.SaveChanges();
+            _repo.Update(updatedInfo);
+            _repo.SaveChanges();
 
-            return View("Confirmation", response);
-        }
-
-        [HttpGet]
-        public IActionResult List()
-        { // Go to table that shows the movie list
-            var applications = _context.Movies
-                .Include("Category")
-                .ToList();
-
-            return View(applications);
-
+            return RedirectToAction("List");
         }
 
     }
