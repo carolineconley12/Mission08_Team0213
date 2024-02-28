@@ -8,6 +8,9 @@ namespace Mission08_Team0213.Controllers
 {
     public class HomeController : Controller
     {
+
+        public IActionResult Index()
+
         private ITaskRepository _repo;
 
         public HomeController(ITaskRepository temp)
@@ -18,6 +21,7 @@ namespace Mission08_Team0213.Controllers
 
         [HttpGet]
         public IActionResult Update(int id)
+
         {
             var recordToEdit = _repo.Movies
                 .Single(x => x.TaskId == id);
@@ -35,6 +39,8 @@ namespace Mission08_Team0213.Controllers
 
             return RedirectToAction("List");
         }
+
+
 
         [HttpGet]
         public IActionResult Delete(int id)
@@ -94,6 +100,7 @@ namespace Mission08_Team0213.Controllers
 
             return RedirectToAction("List");
         }
+
 
     }
 }
