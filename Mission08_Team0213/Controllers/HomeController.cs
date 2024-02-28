@@ -16,6 +16,13 @@ namespace Mission08_Team0213.Controllers
             _repo = temp;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
