@@ -39,8 +39,8 @@
 				<td>@row.CopiedToPlex</td>
 				<td>@row.Notes</td>
 
-				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit">Edit</a></td>
-				<td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete">Delete</a></td>
+				<td><a class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@x.TaskId">Edit</a></td>
+				<td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskId">Delete</a></td>
 				</tr>
 
 				}
@@ -79,8 +79,8 @@
 				<td>@row.CopiedToPlex</td>
 				<td>@row.Notes</td>
 
-				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit">Edit</a></td>
-				<td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete">Delete</a></td>
+				<td><a class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@x.TaskId">Edit</a></td>
+				<td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskId">Delete</a></td>
 				</tr>
 
 				}
@@ -121,8 +121,8 @@
 				<td>@row.CopiedToPlex</td>
 				<td>@row.Notes</td>
 
-				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit">Edit</a></td>
-				<td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete">Delete</a></td>
+				<td><a class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@x.TaskId">Edit</a></td>
+				<td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskId">Delete</a></td>
 				</tr>
 
 				}
@@ -161,8 +161,8 @@
 							<td>@row.CopiedToPlex</td>
 							<td>@row.Notes</td>
 
-							<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit">Edit</a></td>
-							<td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete">Delete</a></td>
+				<td><a class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@x.TaskId">Edit</a></td>
+				<td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskId">Delete</a></td>
 						</tr>
 
 					}
