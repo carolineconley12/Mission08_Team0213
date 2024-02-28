@@ -33,18 +33,9 @@ namespace Mission08_Team0213.Controllers
             if (ModelState.IsValid)
             {
                 _repo.EditTask(task);
+              
             }
             return View();
-        }
-      
-
-        [HttpPost]
-        public IActionResult Edit(TaskTemplate updatedInfo)
-        {
-            _repo.EditTask(updatedInfo);
-            _repo.SaveChanges();
-
-            return RedirectToAction("List");
         }
 
 
