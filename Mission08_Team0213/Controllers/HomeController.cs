@@ -18,9 +18,13 @@ namespace Mission08_Team0213.Controllers
 
         public IActionResult Index()
         {
-            var all = _repo.Tasks.ToList();
+            var all = _repo.Tasks
+                .Where(x => x.Completed == true)
+                .ToList();
+
             return View("Index", all);
-        }
+
+		}
 
 
 
@@ -81,7 +85,7 @@ namespace Mission08_Team0213.Controllers
                 _repo.AddTask(t);
             }
 
-            return View(new TaskTemplate());
+			return View(new TaskTemplate());
 
          }
 
