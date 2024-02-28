@@ -9,8 +9,6 @@ namespace Mission08_Team0213.Controllers
     public class HomeController : Controller
     {
 
-        public IActionResult Index()
-
         private ITaskRepository _repo;
 
         public HomeController(ITaskRepository temp)
@@ -23,10 +21,8 @@ namespace Mission08_Team0213.Controllers
         public IActionResult Update(int id)
 
         {
-            var recordToEdit = _repo.Movies
+            var recordToEdit = _repo.Tasks
                 .Single(x => x.TaskId == id);
-
-            ViewBag.Categories = _repo.Categories.ToList();
 
             return View("Form", recordToEdit);
         }
