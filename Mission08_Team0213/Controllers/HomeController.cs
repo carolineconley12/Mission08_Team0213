@@ -1,32 +1,124 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Mission08_Team0213.Models;
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Mission08_Team0213.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private ITaskRepository _repo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ITaskRepository temp)
         {
-            _logger = logger;
+           _repo = temp;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var blah = _repo.Tasks.FirstOrDefault(x => x.TaskId);
+            return View(blah);
         }
 
-        public IActionResult Privacy()
+        // need an update and delete controller
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var recordToEdit = _context.Movies
+                .Single(x => x.TaskId == id);
+
+            ViewBag.Categories = _context.Categories.ToList();
+
+            return View("Form", recordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Movie updatedInfo)
+        {
+            _context.Update(updatedInfo);
+            _context.SaveChanges();
+
+            return RedirectToAction("List");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var recordToDelete = _context.Movies
+                .Single(x => x.TaskId == id);
+
+            return View(recordToDelete);
+
+        }
+        [HttpPost]
+        public IActionResult Delete(Movie movie)
+        {
+            _context.Movies.Remove(movie);
+            _context.SaveChanges();
+
+            return RedirectToAction("List");
+        }
+
+
+        public IActionResult AddTask()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+    // need an add and edit task controller 
+
+        [HttpGet]
+        public IActionResult AddTask()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new Task());
         }
+
+        [HttpPost]
+
+         public IActionResult AddTask(Task t)
+         {
+            if (ModelState.IsValid)
+            {
+                _repo.AddTask(t);
+            }
+
+            return View(new Task());
+
+         }
+
+
+
+
+
+
+        [HttpGet]
+        public IActionResult Form()
+        {
+            ViewBag.Categories = _context.Categories.ToList();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Form(Movie response)
+        {
+            _context.Movies.Add(response);
+            _context.SaveChanges();
+
+            return View("Confirmation", response);
+        }
+
+        [HttpGet]
+        public IActionResult List()
+        { // Go to table that shows the movie list
+            var applications = _context.Movies
+                .Include("Category")
+                .ToList();
+
+            return View(applications);
+
+        }
+
     }
 }
