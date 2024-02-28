@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Mission08_Team0213.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 // this is my branch
 
