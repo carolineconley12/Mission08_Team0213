@@ -18,7 +18,7 @@
     
 </head>
 
-<h1 class="mb-3">Add a Task</h1>
+<h1 class="mb-3">Add or Edit a Task</h1>
 
 <form method="post" class="needs-validation" novalidate>
     <input type="hidden" asp-for="TaskId" />
@@ -28,10 +28,14 @@
         <input asp-for="TaskName" class="form-control" />
     </div>
 
+    <br />
+
     <div class="form-group">
         <label asp-for="DueDate">Due Date:</label>
         <input asp-for="DueDate" type="date" class="form-control" />
     </div>
+
+    <br />
 
     <div class="form-group">
         <label asp-for="Quadrant">Quadrant:</label>
@@ -43,15 +47,11 @@
         </select>
     </div>
 
+    <br />
+
     <div class="form-group">
-       <!-- <label asp-for="Category">Category:</label>
-        <select asp-for="Category" id="Category" class="form-control">
-            <option value="Home">Home</option>
-            <option value="School">School</option>
-            <option value="Work">Work</option>
-            <option value="Church">Church</option>
-        </select> -->
-        <select asp-for="CategoryId">
+       <label asp-for="Category">Category:</label>
+        <select asp-for="CategoryId" class="form-control">
             <option value="">Select a Category</option>
             @foreach (Category c in ViewBag.Categories)
             {
@@ -60,10 +60,14 @@
         </select>
     </div>
 
+    <br />
+
     <div class="form-group">
         <input type="checkbox" id="Completed" name="Completed" value="True">
         <label for="Completed"> Completed?</label><br>
     </div>
+
+    <br />
 
     <button type="submit" class="btn btn-primary">Add Task</button>
 
