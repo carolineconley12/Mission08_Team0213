@@ -9,7 +9,7 @@
             _context = temp;
         }
 
-        public List<TaskTemplate> Tasks => _context.Tasks.ToList();
+        public IQueryable<TaskTemplate> Tasks => _context.Tasks;
 
         public void AddTask(TaskTemplate task)
         {

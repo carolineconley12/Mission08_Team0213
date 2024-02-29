@@ -2,7 +2,7 @@
 {
     public interface ITaskRepository
     {
-        List<TaskTemplate> Tasks { get; }
+        IQueryable<TaskTemplate> Tasks { get; }
         public void AddTask(TaskTemplate task);
 
         public void EditTask(TaskTemplate task);
