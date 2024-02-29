@@ -36,8 +36,6 @@ namespace Mission08_Team0213.Controllers
 		//	return RedirectToAction("Index");
 		//}
 
-
-
 		[HttpGet]
         public IActionResult Edit(int id)
         {
@@ -95,7 +93,7 @@ namespace Mission08_Team0213.Controllers
                 _repo.AddTask(t);
             }
 
-			return View(new TaskTemplate());
+			return View("Index", new TaskTemplate());
 
          }
 
