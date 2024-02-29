@@ -21,6 +21,7 @@
 			<tr>
 				<th>Completed</th>
 				<th>Task</th>
+				<th>Category</th>
 				<th>Due Date</th>
 				<th>Update</th>
 				<th>Delete</th>
@@ -31,8 +32,9 @@
 				{
 
 				<tr>
-				<td>@row.Completed</td>
+				<td><input type="checkbox"/>&nbsp;</td>
 				<td>@row.TaskName</td>
+				<td>@row.Category.CategoryName</td>
 				<td>@row.DueDate</td>
 
 				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@row.TaskId">Edit</a></td>
@@ -55,6 +57,7 @@
 			<tr>
 				<th>Completed</th>
 				<th>Task</th>
+				<th>Category</th>
 				<th>Due Date</th>
 				<th>Update</th>
 				<th>Delete</th>
@@ -65,8 +68,9 @@
 				{
 
 				<tr>
-				<td>@row.Completed</td>
+				<td><input type="checkbox"/>&nbsp;</td>
 				<td>@row.TaskName</td>
+				<td>@row.Category.CategoryName</td>
 				<td>@row.DueDate</td>
 
 				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@row.TaskId">Edit</a></td>
@@ -91,6 +95,7 @@
 			<tr>
 				<th>Completed</th>
 				<th>Task</th>
+				<th>Category</th>
 				<th>Due Date</th>
 				<th>Update</th>
 				<th>Delete</th>
@@ -101,8 +106,9 @@
 				{
 
 				<tr>
-				<td>@row.Completed</td>
+				<td><input type="checkbox"/>&nbsp;</td>
 				<td>@row.TaskName</td>
+				<td>@row.Category.CategoryName</td>
 				<td>@row.DueDate</td>
 
 				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@row.TaskId">Edit</a></td>
@@ -125,6 +131,7 @@
 			<tr>
 				<th>Completed</th>
 				<th>Task</th>
+				<th>Category</th>
 				<th>Due Date</th>
 				<th>Update</th>
 				<th>Delete</th>
@@ -135,8 +142,9 @@
 				{
 
 				<tr>
-				<td>@row.Completed</td>
+				<td><input type="checkbox" name="name1" />&nbsp;</td>
 				<td>@row.TaskName</td>
+				<td>@row.Category.CategoryName</td>
 				<td>@row.DueDate</td>
 
 				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@row.TaskId">Edit</a></td>

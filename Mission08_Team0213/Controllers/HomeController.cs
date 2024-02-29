@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using Mission08_Team0213.Models;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography.Xml;
 
 namespace Mission08_Team0213.Controllers
 {
@@ -18,13 +20,25 @@ namespace Mission08_Team0213.Controllers
 
         public IActionResult Index()
         {
-            var all = _repo.Tasks.ToList();
+            var all = _repo.Tasks
+                .Where(x => x.Completed == true)
+                .ToList();
+
             return View("Index", all);
-        }
+		}
+
+
+		[HttpPost]
+		public IActionResult CompleteTask(int id)
+		{
+			_repo.MarkTaskAsCompleted(id);
+
+			return RedirectToAction("Index");
+		}
 
 
 
-        [HttpGet]
+		[HttpGet]
         public IActionResult Edit(int id)
         {
             var record = _repo.Tasks
@@ -81,7 +95,7 @@ namespace Mission08_Team0213.Controllers
                 _repo.AddTask(t);
             }
 
-            return View(new TaskTemplate());
+			return View(new TaskTemplate());
 
          }
 
