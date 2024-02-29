@@ -27,7 +27,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (var row in Model)
+			@foreach (var row in Model.Where(t => t.Quadrant == 1))
 				{
 
 				<tr>
@@ -61,7 +61,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (var row in Model)
+					@foreach (var row in Model.Where(t => t.Quadrant == 2))
 				{
 
 				<tr>
@@ -97,7 +97,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (var row in Model)
+				@foreach (var row in Model.Where(t => t.Quadrant == 3))
 				{
 
 				<tr>
@@ -131,7 +131,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (var row in Model)
+				@foreach (var row in Model.Where(t => t.Quadrant == 4))
 				{
 
 				<tr>

@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using Mission08_Team0213.Models;
-using SQLitePCL;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
@@ -21,9 +20,8 @@ namespace Mission08_Team0213.Controllers
 
         public IActionResult Index()
         {
-            var all = _repo.Tasks
-                .Where(x => x.Completed == false)
-                .Include(x => x.Category);    
+            var all = _repo.Tasks.Include(x=>x.Category)
+                .Where(x => x.Completed == false);
 
             return View("Index", all);
 		}
@@ -41,8 +39,8 @@ namespace Mission08_Team0213.Controllers
         public IActionResult Edit(int id)
         {
             var record = _repo.Tasks
-                .Single(x => x.TaskId == id);
-                ViewBag.Categories = _repo.Categories
+                 .Single(x => x.TaskId == id);
+            ViewBag.Categories = _repo.Categories
                 .OrderBy(x => x.CategoryName);
 
 
@@ -56,21 +54,11 @@ namespace Mission08_Team0213.Controllers
             {
                 _repo.EditTask(task);
                 ViewBag.Categories = _repo.Categories;
-
-
+              
             }
             return RedirectToAction("Index");
         }
 
-
-        //[HttpGet]
-        //public IActionResult Delete(int id)
-        //{
-        //    var recordToDelete = _repo.Tasks
-        //        .Single(x => x.TaskId == id);
-
-        //    return View("Index", recordToDelete);
-        //}
 
         [HttpGet]
         public IActionResult Delete(int id)
@@ -81,14 +69,14 @@ namespace Mission08_Team0213.Controllers
             return View(recordToDelete);
         }
 
-
         [HttpPost]
         public IActionResult Delete(TaskTemplate task)
         {
             _repo.DeleteTask(task);
-
+      
             return RedirectToAction("Index");
         }
+
 
 
         [HttpGet]

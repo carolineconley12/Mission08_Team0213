@@ -4,7 +4,6 @@
 @{
 }
 @model TaskTemplate
-<!-- this page confirms that the individual would like to delete the movie selected-->
 
 <h2>Confirm Deletion</h2>
 <h3>@Model.TaskName</h3>
@@ -12,6 +11,5 @@
     <input type="hidden" asp-for="TaskId" />
     <br /><br />
     <button class="btn btn-danger" type="submit">Delete</button>
-    <a class="btn btn-info" asp-controller="Home" asp-action="Index">Cancel</a>
+    <button class="btn btn-info" asp-controller="Home" asp-action="Index">Cancel</button>
 </form>
-
