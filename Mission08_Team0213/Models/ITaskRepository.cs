@@ -9,9 +9,5 @@
 
         public void DeleteTask(TaskTemplate task);
 
-		public class TaskTemplate
-		{
-			public bool IsCompleted { get; set; }
-		}
 	}
 }
