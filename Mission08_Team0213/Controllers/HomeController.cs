@@ -28,13 +28,13 @@ namespace Mission08_Team0213.Controllers
 		}
 
 
-		[HttpPost]
-		public IActionResult CompleteTask(int id)
-		{
-			_repo.MarkTaskAsCompleted(id);
+		//[HttpPost]
+		//public IActionResult CompleteTask(int id)
+		//{
+		//	_repo.MarkTaskAsCompleted(id);
 
-			return RedirectToAction("Index");
-		}
+		//	return RedirectToAction("Index");
+		//}
 
 
 

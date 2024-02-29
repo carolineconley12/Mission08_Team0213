@@ -9,6 +9,8 @@
             _context = temp;
         }
 
+        public List<Category> Categories => _context.Categories.ToList();
+
         public List<TaskTemplate> Tasks => _context.Tasks.ToList();
 
         public void AddTask(TaskTemplate task)
@@ -28,6 +30,7 @@
             _context.Tasks.Remove(task);
             _context.SaveChanges();
         }
+
     }
 
 }
