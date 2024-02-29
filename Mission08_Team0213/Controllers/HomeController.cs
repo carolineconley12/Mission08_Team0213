@@ -53,6 +53,7 @@ namespace Mission08_Team0213.Controllers
             if (ModelState.IsValid)
             {
                 _repo.EditTask(task);
+                ViewBag.Categories = _repo.Categories;
               
             }
             return RedirectToAction("Index");
@@ -65,15 +66,15 @@ namespace Mission08_Team0213.Controllers
             var recordToDelete = _repo.Tasks
                 .Single(x => x.TaskId == id);
 
-            return View("Index", recordToDelete);
+            return View(recordToDelete);
         }
 
         [HttpPost]
         public IActionResult Delete(TaskTemplate task)
         {
             _repo.DeleteTask(task);
-            var allTasks = _repo.Tasks.Include(x => x.Category).Where(x => x.Completed == false);
-            return View("Index", allTasks);
+      
+            return RedirectToAction("Index");
         }
 
 
@@ -81,6 +82,8 @@ namespace Mission08_Team0213.Controllers
         [HttpGet]
         public IActionResult AddTask()
         {
+            ViewBag.Categories = _repo.Categories
+                .OrderBy(x => x.CategoryName);
             return View(new TaskTemplate());
         }
 
