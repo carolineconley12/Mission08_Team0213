@@ -2,8 +2,8 @@
 {
     public interface ITaskRepository
     {
-        List<TaskTemplate> Tasks { get; }
-        List<Category> Categories { get; }
+        IQueryable<TaskTemplate> Tasks { get; }
+        IQueryable<Category> Categories { get; }
         public void AddTask(TaskTemplate task);
 
         public void EditTask(TaskTemplate task);
