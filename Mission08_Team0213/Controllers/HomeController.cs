@@ -20,7 +20,7 @@ namespace Mission08_Team0213.Controllers
 
         public IActionResult Index()
         {
-            var all = _repo.Tasks
+            var all = _repo.Tasks.Include(x=>x.Category)
                 .Where(x => x.Completed == true)
                 .ToList();
 
