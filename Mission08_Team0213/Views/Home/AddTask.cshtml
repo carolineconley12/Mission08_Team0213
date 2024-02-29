@@ -23,21 +23,21 @@
 <form method="post" class="needs-validation" novalidate>
     <input type="hidden" asp-for="TaskId" />
 
-    <div class="form-group">
+    <div class="form-group col-lg-6 col-sm-6">
         <label asp-for="TaskName">Task:</label>
         <input asp-for="TaskName" class="form-control" />
     </div>
 
     <br />
 
-    <div class="form-group">
+    <div class="form-group col-lg-6 col-sm-6">
         <label asp-for="DueDate">Due Date:</label>
         <input asp-for="DueDate" type="date" class="form-control" />
     </div>
 
     <br />
 
-    <div class="form-group">
+    <div class="form-group col-lg-6 col-sm-6">
         <label asp-for="Quadrant">Quadrant:</label>
         <select asp-for="Quadrant" id="Quadrant" class="form-control">
             <option value="1">1</option>
@@ -49,7 +49,7 @@
 
     <br />
 
-    <div class="form-group">
+    <div class="form-group col-lg-6 col-sm-6">
        <label asp-for="Category">Category:</label>
         <select asp-for="CategoryId" class="form-control">
             <option value="">Select a Category</option>
@@ -62,7 +62,7 @@
 
     <br />
 
-    <div class="form-group">
+    <div class="form-group col-lg-6 col-sm-6">
         <input type="checkbox" id="Completed" name="Completed" value="True">
         <label for="Completed"> Completed?</label><br>
     </div>
