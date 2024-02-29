@@ -72,10 +72,10 @@ namespace Mission08_Team0213.Controllers
         public IActionResult Delete(TaskTemplate task)
         {
             _repo.DeleteTask(task);
-          
-
-            return RedirectToAction("Index");
+            var allTasks = _repo.Tasks.Include(x => x.Category).Where(x => x.Completed == false);
+            return View("Index", allTasks);
         }
+
 
 
         [HttpGet]
