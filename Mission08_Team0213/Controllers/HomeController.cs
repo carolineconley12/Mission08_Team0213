@@ -22,7 +22,8 @@ namespace Mission08_Team0213.Controllers
         {
            
             var all = _repo.Tasks.Include(x=>x.Category)
-                .Where(x => x.Completed == true);
+                .Where(x => x.Completed == true)
+                .ToList();
 
             return View("Index", all);
 		}
