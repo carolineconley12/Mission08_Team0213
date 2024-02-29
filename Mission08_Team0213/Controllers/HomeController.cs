@@ -94,10 +94,8 @@ namespace Mission08_Team0213.Controllers
                 _repo.AddTask(t);
             }
 
-			return View("Index", new TaskTemplate());
+			return RedirectToAction("Index", new TaskTemplate());
 
          }
-
-
     }
 }
