@@ -41,6 +41,8 @@ namespace Mission08_Team0213.Controllers
         {
             var record = _repo.Tasks
                  .Single(x => x.TaskId == id);
+            ViewBag.Categories = _repo.Categories
+                .OrderBy(x => x.CategoryName);
 
 
             return View("AddTask", record);
@@ -54,7 +56,7 @@ namespace Mission08_Team0213.Controllers
                 _repo.EditTask(task);
               
             }
-            return View("Index", task);
+            return RedirectToAction("Index");
         }
 
 
