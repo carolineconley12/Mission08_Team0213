@@ -65,7 +65,7 @@ namespace Mission08_Team0213.Controllers
             var recordToDelete = _repo.Tasks
                 .Single(x => x.TaskId == id);
 
-            return View(recordToDelete);
+            return View("Index", recordToDelete);
         }
 
         [HttpPost]
@@ -74,10 +74,8 @@ namespace Mission08_Team0213.Controllers
             _repo.DeleteTask(task);
           
 
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
-
-        //ADD VIEW
 
 
         [HttpGet]
