@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using Mission08_Team0213.Models;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography.Xml;
 
 namespace Mission08_Team0213.Controllers
 {
@@ -16,28 +18,31 @@ namespace Mission08_Team0213.Controllers
             _repo = temp;
         }
 
-        [HttpGet]
         public IActionResult Index()
         {
-            return View(new TaskTemplate());
-        }
+            var all = _repo.Tasks
+                .Where(x => x.Completed == true)
+                .ToList();
 
-        [HttpPost]
-        public IActionResult Index(TaskTemplate task)
-        {
-            if (ModelState.IsValid)
-            {
-                _repo.AddTask(task);
-            }
-            return View(new TaskTemplate());
-        }
+            return View("Index", all);
+		}
 
-        [HttpGet]
+
+		[HttpPost]
+		public IActionResult CompleteTask(int id)
+		{
+			_repo.MarkTaskAsCompleted(id);
+
+			return RedirectToAction("Index");
+		}
+
+
+
+		[HttpGet]
         public IActionResult Edit(int id)
         {
             var record = _repo.Tasks
                  .Single(x => x.TaskId == id);
-            _repo.EditTask(record);
 
 
             return View("AddTask", record);
@@ -49,29 +54,9 @@ namespace Mission08_Team0213.Controllers
             if (ModelState.IsValid)
             {
                 _repo.EditTask(task);
+              
             }
-            return View();
-        }
-      
-
-
-        [HttpGet]
-        public IActionResult Update(int id)
-
-        {
-            var recordToEdit = _repo.Tasks
-                .Single(x => x.TaskId == id);
-
-            return View("Form", recordToEdit);
-        }
-
-        [HttpPost]
-        public IActionResult Update(TaskTemplate updatedInfo)
-        {
-            _repo.Update(updatedInfo);
-            _repo.SaveChanges();
-
-            return RedirectToAction("List");
+            return View(task);
         }
 
 
@@ -82,13 +67,13 @@ namespace Mission08_Team0213.Controllers
                 .Single(x => x.TaskId == id);
 
             return View(recordToDelete);
-
         }
+
         [HttpPost]
         public IActionResult Delete(TaskTemplate task)
         {
-            _repo.Tasks.Remove(task);
-            _repo.SaveChanges();
+            _repo.DeleteTask(task);
+          
 
             return RedirectToAction("List");
         }
@@ -110,29 +95,9 @@ namespace Mission08_Team0213.Controllers
                 _repo.AddTask(t);
             }
 
-            return View(new TaskTemplate());
+			return View(new TaskTemplate());
 
          }
-
-        [HttpGet]
-        public IActionResult Edit(int id)
-        {
-            var recordToEdit = _repo.Tasks
-                .Single(x => x.TaskId == id);
-
-            ViewBag.Categories = _repo.Categories.ToList();
-
-            return View("Form", recordToEdit);
-        }
-
-        [HttpPost]
-        public IActionResult Edit(TaskTemplate updatedInfo)
-        {
-            _repo.Update(updatedInfo);
-            _repo.SaveChanges();
-
-            return RedirectToAction("List");
-        }
 
 
     }
