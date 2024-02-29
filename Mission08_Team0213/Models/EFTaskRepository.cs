@@ -28,6 +28,16 @@
             _context.Tasks.Remove(task);
             _context.SaveChanges();
         }
-    }
+
+		public void MarkTaskAsCompleted(int taskId)
+		{
+			var task = _context.Tasks.FirstOrDefault(t => t.TaskId == taskId);
+			if (task != null)
+			{
+				task.IsCompleted = true;
+				_context.SaveChanges();
+			}
+		}
+	}
 
 }
