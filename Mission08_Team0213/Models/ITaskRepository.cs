@@ -8,5 +8,6 @@
         public void EditTask(TaskTemplate task);
 
         public void DeleteTask(TaskTemplate task);
-    }
+
+	}
 }

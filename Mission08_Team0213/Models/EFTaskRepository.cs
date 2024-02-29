@@ -28,6 +28,7 @@
             _context.Tasks.Remove(task);
             _context.SaveChanges();
         }
-    }
+
+	}
 
 }
