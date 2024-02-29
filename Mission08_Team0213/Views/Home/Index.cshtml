@@ -34,7 +34,7 @@
 				<tr>
 				<td><input type="checkbox"/>&nbsp;</td>
 				<td>@row.TaskName</td>
-				<td>@row.Category.CategoryName</td>
+				<td>@row.Category?.CategoryName</td>
 				<td>@row.DueDate</td>
 
 				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@row.TaskId">Edit</a></td>
@@ -70,7 +70,7 @@
 				<tr>
 				<td><input type="checkbox"/>&nbsp;</td>
 				<td>@row.TaskName</td>
-				<td>@row.Category.CategoryName</td>
+				<td>@row.Category?.CategoryName</td>
 				<td>@row.DueDate</td>
 
 				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@row.TaskId">Edit</a></td>
@@ -108,7 +108,7 @@
 				<tr>
 				<td><input type="checkbox" value="true"/>&nbsp;</td>
 				<td>@row.TaskName</td>
-				<td>@row.Category.CategoryName</td>
+				<td>@row.Category?.CategoryName</td>
 				<td>@row.DueDate</td>
 
 				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@row.TaskId">Edit</a></td>
@@ -144,7 +144,7 @@
 				<tr>
 				<td><input type="checkbox" />&nbsp;</td>
 				<td>@row.TaskName</td>
-				<td>@row.Category.CategoryName</td>
+				<td>@row.Category?.CategoryName</td>
 				<td>@row.DueDate</td>
 
 				<td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@row.TaskId">Edit</a></td>
